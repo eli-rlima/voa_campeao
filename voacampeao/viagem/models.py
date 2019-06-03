@@ -12,7 +12,7 @@ class Viagem(models.Model):
     descricao_comp = models.TextField(null=False, blank=False)
     modalidade_comp = models.CharField(max_length=30, null=False)
     path_documento = models.FilePathField(null=False, blank=False)
-    status = models.IntegerField(null=False, blank=False, choices='STATUS_CHOICES')
+    status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES)
     #id_atleta
     #id_patrocinador
 
