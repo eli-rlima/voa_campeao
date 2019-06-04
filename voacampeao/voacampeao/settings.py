@@ -25,11 +25,11 @@ SECRET_KEY = '(q8c=1l5ta6o7stxp4x#lp!#l!^=*a*9j*@wl&7eao3mwok$mz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -117,7 +117,7 @@ REST_FRAMEWORK = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'UTC'
 

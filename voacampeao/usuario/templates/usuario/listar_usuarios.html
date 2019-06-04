@@ -1,0 +1,34 @@
+{%extends "usuario/base.html"%}
+
+{%block titulo%}
+Listar Usuarios
+{%endblock titulo%}
+
+{%block conteudo%}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Data de Nascimento</th>
+            <th>Sexo</th>
+            <th>CPF</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for i in usuarios%}
+        <tr>
+            <td><a href="{% url 'listar_usuario_id' i.cpf %}">{{i.nome}}</a></td>
+            <td>{{i.cpf}}</td>
+            <td>{{i.data_nascimento | date:"d M Y"}}</td>
+            <td>{{i.sexo}}</td>
+            <td>
+                <a href="{% url 'editar_usuario' i.cpf %}">Editar</a>
+                 <a href="{% url 'remover_usuario' i.cpf %}">Remover</a>
+            </td>
+        </tr>
+    {%endfor%}
+    </tbody>
+</table>
+    <a href="{% url 'cadastrar_usuario' %}"> <button class="btn btn-primary">cadastrar</button></a>
+{%endblock conteudo%}
