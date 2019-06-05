@@ -7,5 +7,5 @@ class Viagens(viewsets.ModelViewSet):
     queryset = Viagem.objects.all()
     serializer_class = ViagemSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('origem', 'destino')
+    search_fields = ('origem', 'destino','modalidade_comp')
 
