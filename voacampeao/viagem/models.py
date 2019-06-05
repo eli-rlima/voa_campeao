@@ -15,5 +15,5 @@ class Viagem(models.Model):
     status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES)
     #id_atleta
     #id_patrocinador
-
+    #id_patrocinio
 

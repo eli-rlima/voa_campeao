@@ -4,4 +4,4 @@ from .models import Viagem
 class ViagemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Viagem
-        fields = ('origem', 'destino', 'data_ida', 'data_volta', 'descricao_comp', 'modalidade_comp','status')
+        fields = ('url','origem', 'destino', 'data_ida', 'data_volta', 'descricao_comp', 'modalidade_comp')
