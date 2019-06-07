@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Viagem
+from .serializers import ViagemSerializer
+from rest_framework import filters
 
-# Create your views here.
+class Viagens(viewsets.ModelViewSet):
+    queryset = Viagem.objects.all()
+    serializer_class = ViagemSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('origem', 'destino','modalidade_comp')
+
