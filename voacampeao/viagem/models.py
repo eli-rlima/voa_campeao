@@ -1,5 +1,6 @@
 '''Classe que define o objeto Viagem.'''
 from django.db import models
+from usuario.models import Usuario
 
 class Viagem(models.Model):
     '''Atributos e integração com o banco.'''
@@ -13,6 +14,7 @@ class Viagem(models.Model):
     modalidade_comp = models.CharField(max_length=30, null=False)
     path_documento = models.FilePathField(null=False, blank=False)
     status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES)
-    #id_atleta
-    #id_patrocinador
+    atleta = models.ForeignKey(Usuario, related_name='atleta', default="", on_delete=models.PROTECT)
+    patrocinador = models.ForeignKey(Usuario, related_name='patrocinador', default="",
+        on_delete=models.PROTECT)
     #id_patrocinio
