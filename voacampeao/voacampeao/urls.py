@@ -19,12 +19,12 @@ from rest_framework import routers
 from viagem import views  as viewsViagem
 from usuario import views
 
-router = routers.DefaultRouter()
-router.register(r'usuarios', views.Usuarios)
-router.register(r'viagens', viewsViagem.Viagens)
+ROUTER = routers.DefaultRouter()
+ROUTER.register(r'usuarios', views.Usuarios)
+ROUTER.register(r'viagens', viewsViagem.Viagens)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', include(router.urls))
+    path('', include(ROUTER.urls))
 ]
