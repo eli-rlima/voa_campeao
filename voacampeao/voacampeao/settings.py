@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'voacampeao.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'voa_campeao',
         'USER': 'root',
         'PASSWORD': 'voacampeao',
-        'HOST': 'localhost', 
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
