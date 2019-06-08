@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'usuario',
     'viagem',
     'rest_framework',
-    'patrocinio'
 ]
 
 MIDDLEWARE = [
