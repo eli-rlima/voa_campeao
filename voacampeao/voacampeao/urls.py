@@ -16,12 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from patrocinio import views as viewsPatrocinio
 from viagem import views  as viewsViagem
 from usuario import views
 
 ROUTER = routers.DefaultRouter()
-ROUTER.register(r'patrocinio', viewsPatrocinio.Patrocinios)
 ROUTER.register(r'usuarios', views.Usuarios)
 ROUTER.register(r'viagens', viewsViagem.Viagens)
 
