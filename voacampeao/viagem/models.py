@@ -5,7 +5,7 @@ from usuario.models import Usuario
 class Viagem(models.Model):
     '''Atributos e integração com o banco.'''
     STATUS_CHOICES = (('1', 'EM AVALIAÇÃO'), ('2', 'ABERTO'), ('3', 'EM PATROCINIO'),
-    ('4', 'PATROCINADA'))
+    ('4', 'PATROCINADA'), ('5', 'VENCIDA'))
     origem = models.CharField(max_length=30, null=False, blank=False)
     destino = models.CharField(max_length=30, null=False, blank=False)
     data_ida = models.DateField(auto_now=False, auto_now_add=False)
@@ -13,7 +13,7 @@ class Viagem(models.Model):
     descricao_comp = models.TextField(null=False, blank=False)
     modalidade_comp = models.CharField(max_length=30, null=False)
     path_documento = models.FilePathField(null=False, blank=False)
-    status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES)
+    status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES, default=1)
     atleta = models.ForeignKey(Usuario, related_name='atleta', default="", on_delete=models.PROTECT)
 
     def criar_patrocinio(self, novo_patrocinador):
@@ -25,4 +25,4 @@ class Patrocinio(models.Model):
     data_intencao =  models.DateTimeField(auto_now_add=True, blank=True)
     viagem = models.ForeignKey(Viagem, related_name='viagem_opened', default="", on_delete=models.PROTECT)
     patrocinadorOp = models.ForeignKey(Usuario, related_name='patrocinador_opened', default="", on_delete=models.PROTECT)
-    status_pat = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES_PAT, default="")
+    status_pat = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES_PAT, default=1)
