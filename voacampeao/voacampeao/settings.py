@@ -25,11 +25,11 @@ SECRET_KEY = '(q8c=1l5ta6o7stxp4x#lp!#l!^=*a*9j*@wl&7eao3mwok$mz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'voacampeao.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'voa_campeao',
         'USER': 'root',
         'PASSWORD': 'voacampeao',
-        'HOST': 'localhost', 
+        'HOST': 'localhost',
         'PORT': '3306'
     }
 }
