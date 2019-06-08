@@ -15,13 +15,14 @@ class Viagem(models.Model):
     path_documento = models.FilePathField(null=False, blank=False)
     status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES)
     atleta = models.ForeignKey(Usuario, related_name='atleta', default="", on_delete=models.PROTECT)
-    patrocinador = models.ForeignKey(Usuario, related_name='patrocinador_conf', default="",
-        on_delete=models.PROTECT)
 
     def criar_patrocinio(self, novo_patrocinador):
-        Patrocinio(viagem=self, patrocinadorOp=novo_patrocinador).save()
+      Patrocinio(viagem=self, patrocinadorOp=novo_patrocinador).save()
 
 class Patrocinio(models.Model):
+    STATUS_CHOICES_PAT = (('1', 'PENDENTE'), ('2', 'ENVIADO'), ('3', 'CONFIRMADO'),
+     ('4', 'RECUSADO'))
     data_intencao =  models.DateTimeField(auto_now_add=True, blank=True)
     viagem = models.ForeignKey(Viagem, related_name='viagem_opened', default="", on_delete=models.PROTECT)
     patrocinadorOp = models.ForeignKey(Usuario, related_name='patrocinador_opened', default="", on_delete=models.PROTECT)
+    status_pat = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES_PAT, default="")
