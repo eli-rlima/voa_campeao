@@ -22,6 +22,7 @@ from usuario import views
 ROUTER = routers.DefaultRouter()
 ROUTER.register(r'usuarios', views.Usuarios)
 ROUTER.register(r'viagens', viewsViagem.Viagens)
+ROUTER.register(r'patrocinios', viewsViagem.Patrocinios)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
