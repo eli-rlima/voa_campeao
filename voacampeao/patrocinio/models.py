@@ -1,6 +1,9 @@
 from django.db import models
+#from usuario.models import Usuario
+#from viagem.models import Viagem 
+
 
 class Patrocinio(models.Model):
 	data_intencao =  models.DateTimeField(auto_now_add=True, blank=True)
-	#id_patrocinador
-	#id_viagem
+	#viagem = models.ForeignKey(Viagem, related_name='viagem', default="", on_delete=models.CASCADE)
+    #patrocinador = models.ForeignKey(Usuario, related_name='patrocinador', default="", on_delete=models.CASCADE)
