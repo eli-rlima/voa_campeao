@@ -4,5 +4,5 @@ from .models import Patrocinio
 class PatrocinioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patrocinio
-        fields = '__all__'
+        fields = ('data_intencao', 'viagem', 'patrocinador')
 

@@ -7,5 +7,5 @@ class Patrocinios(viewsets.ModelViewSet):
     queryset = Patrocinio.objects.all()
     serializer_class = PatrocinioSerializer
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('data_intencao')
+    search_fields = ('data_intencao', 'viagem', 'patrocinador')
 # Create your views here.
