@@ -25,7 +25,7 @@ class Viagens(viewsets.ModelViewSet):
         return Response(viagens.data)
 
     @action(methods=['get'], detail=False)
-    def viagenStatus(self, request, pk=None):
+    def viagemStatus(self, request, pk=None):
         status = self.request.query_params.get('status', None)
         queryset = Viagem.objects.filter(status=status)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
@@ -38,7 +38,13 @@ class Viagens(viewsets.ModelViewSet):
         queryset = Viagem.objects.exclude(data_ida__gt=dateProx)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
-        
+    
+    @action(methods=['get'], detail=False)
+    def viagemModalidade(self, request, pk=None):
+        modalidade = self.request.query_params.get('modalidade', None)
+        queryset = Viagem.objects.filter(modalidade_comp=modalidade)
+        viagens = ViagemSerializer(queryset, many=True, context={'request': request})
+        return Response(viagens.data)
 
 class Patrocinios(viewsets.ModelViewSet):
     queryset = Patrocinio.objects.all()
