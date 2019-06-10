@@ -1,4 +1,6 @@
 '''Classe que cria views para acesso a viagens no banco.'''
+from functools import partial
+
 from rest_framework import viewsets
 from rest_framework import filters
 from rest_framework.decorators import action
@@ -38,10 +40,16 @@ class Viagens(viewsets.ModelViewSet):
         return Response(viagens.data)
         
 
-        
-
 class Patrocinios(viewsets.ModelViewSet):
     queryset = Patrocinio.objects.all()
     serializer_class = PatrocinioSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('patrocinadorOp')
+
+
+    @action(methods=['get'], detail=False)
+    def viagensPatrocinador(self, request, pk=None):
+        cpf = self.request.query_params.get('cpf', None)
+        queryset = Patrocinio.objects.filter(patrocinadorOp=cpf)
+        patrocinador = PatrocinioSerializer(queryset, many=True, context={'request': request})
+        return Response(patrocinador.data)
