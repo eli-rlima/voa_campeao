@@ -24,7 +24,7 @@ class Usuario(models.Model):
     def __str__(self):
         return self.cpf
 
-    def tornarAdm(self){
+    def tornarAdm(self):
         self.tipo_usuario = 1
         self.save()
-    }
+    
