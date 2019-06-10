@@ -5,7 +5,7 @@ class ViagemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Viagem
         fields = ('url','origem', 'destino', 'data_ida', 'data_volta', 'descricao_comp',
-        'modalidade_comp', 'atleta')
+        'modalidade_comp', 'atleta', 'status')
 
 class PatrocinioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
