@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.utils.serializer_helpers import ReturnDict
 from .models import Viagem, Patrocinio
 
 class ViagemSerializer(serializers.HyperlinkedModelSerializer):
@@ -10,4 +11,4 @@ class ViagemSerializer(serializers.HyperlinkedModelSerializer):
 class PatrocinioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Patrocinio
-        fields = ('url', 'viagem', 'patrocinadorOp', 'data_intencao')
+        fields = ('url', 'viagem', 'patrocinadorOp', 'data_intencao', 'ticket', 'status_pat')
