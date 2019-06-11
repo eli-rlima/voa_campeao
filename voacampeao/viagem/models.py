@@ -35,7 +35,9 @@ class Patrocinio(models.Model):
 
     def confirmarTicket(self):
       self.status_pat = 3
+      self.save()
       
     def recusarTicket(self):
       self.status_pat = 4
+      self.save()
 
