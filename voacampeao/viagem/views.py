@@ -2,7 +2,7 @@
 from functools import partial
 
 from rest_framework import viewsets
-from rest_framework import filters
+from rest_framework import filters, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Viagem, Patrocinio
@@ -30,11 +30,11 @@ class Viagens(viewsets.ModelViewSet):
         queryset = Viagem.objects.filter(status=status)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
-    
+
     @action(methods=['get'], detail=False)
     def viagemProximidade(self, request, pk=None):
         dias = self.request.query_params.get('dias', None)
-        dateProx = datetime.today() + timedelta(days=int (dias))
+        dateProx = datetime.today() + timedelta(days=int(dias))
         queryset = Viagem.objects.exclude(data_ida__gt=dateProx)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
@@ -59,3 +59,4 @@ class Patrocinios(viewsets.ModelViewSet):
         queryset = Patrocinio.objects.filter(patrocinadorOp=cpf)
         patrocinador = PatrocinioSerializer(queryset, many=True, context={'request': request})
         return Response(patrocinador.data)
+

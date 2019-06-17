@@ -20,9 +20,11 @@ class Viagem(models.Model):
       Patrocinio(viagem=self, patrocinadorOp=novo_patrocinador).save()
 
 class Patrocinio(models.Model):
+    '''Classe que atribue uma patrocinador a uma viagem'''
     STATUS_CHOICES_PAT = (('1', 'PENDENTE'), ('2', 'ENVIADO'), ('3', 'CONFIRMADO'),
      ('4', 'RECUSADO'))
-    data_intencao =  models.DateTimeField(auto_now_add=True, blank=True)
+    data_intencao = models.DateTimeField(auto_now_add=True, blank=True)
     viagem = models.ForeignKey(Viagem, related_name='viagem_opened', default="", on_delete=models.PROTECT)
     patrocinadorOp = models.ForeignKey(Usuario, related_name='patrocinador_opened', default="", on_delete=models.PROTECT)
     status_pat = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES_PAT, default=1)
+    ticket = models.CharField(max_length=6, default="", null=False)
