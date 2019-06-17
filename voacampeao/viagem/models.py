@@ -27,17 +27,3 @@ class Patrocinio(models.Model):
     patrocinadorOp = models.ForeignKey(Usuario, related_name='patrocinador_opened', default="", on_delete=models.PROTECT)
     status_pat = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES_PAT, default=1)
     ticket = models.CharField(max_length=6, default="", null=False)
-
-    def enviarTicket(self, novo_ticket):
-      self.ticket = novo_ticket
-      self.status_pat = 2
-      self.save()
-
-    def confirmarTicket(self):
-      self.status_pat = 3
-      self.save()
-      
-    def recusarTicket(self):
-      self.status_pat = 4
-      self.save()
-
