@@ -34,7 +34,7 @@ class Viagens(viewsets.ModelViewSet):
     @action(methods=['get'], detail=False)
     def viagemProximidade(self, request, pk=None):
         dias = self.request.query_params.get('dias', None)
-        dateProx = datetime.today() + timedelta(days=int (dias))
+        dateProx = datetime.today() + timedelta(days=int(dias))
         queryset = Viagem.objects.exclude(data_ida__gt=dateProx)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
