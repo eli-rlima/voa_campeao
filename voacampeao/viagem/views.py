@@ -30,7 +30,7 @@ class Viagens(viewsets.ModelViewSet):
         queryset = Viagem.objects.filter(status=status)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
-    
+
     @action(methods=['get'], detail=False)
     def viagemProximidade(self, request, pk=None):
         dias = self.request.query_params.get('dias', None)
@@ -43,6 +43,12 @@ class Viagens(viewsets.ModelViewSet):
     def viagemModalidade(self, request, pk=None):
         modalidade = self.request.query_params.get('modalidade', None)
         queryset = Viagem.objects.filter(modalidade_comp=modalidade)
+        viagens = ViagemSerializer(queryset, many=True, context={'request': request})
+        return Response(viagens.data)
+    
+    @action(methods=['get'], detail=False)
+    def viagemEmAvaliação(self, request, pk=None):
+        queryset = Viagem.objects.filter(status='1')
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
 
