@@ -45,6 +45,12 @@ class Viagens(viewsets.ModelViewSet):
         queryset = Viagem.objects.filter(modalidade_comp=modalidade)
         viagens = ViagemSerializer(queryset, many=True, context={'request': request})
         return Response(viagens.data)
+    
+    @action(methods=['get'], detail=False)
+    def viagemEmAvaliação(self, request, pk=None):
+        queryset = Viagem.objects.filter(status='1')
+        viagens = ViagemSerializer(queryset, many=True, context={'request': request})
+        return Response(viagens.data)
 
 class Patrocinios(viewsets.ModelViewSet):
     queryset = Patrocinio.objects.all()
