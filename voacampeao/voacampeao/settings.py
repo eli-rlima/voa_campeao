@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'usuario',
     'viagem',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -112,6 +114,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 
 }
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    "https://localhost:3333",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
