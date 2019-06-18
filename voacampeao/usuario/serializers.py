@@ -2,8 +2,9 @@
 from rest_framework import serializers
 from .models import Usuario
 
-class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
+class UsuarioSerializer(serializers.ModelSerializer):
     '''Classe que serializa e cria url para cada usuário no banco.'''
     class Meta:
         model = Usuario
-        fields = ('url', 'cpf', 'nome', 'sexo', 'data_nascimento')
+        fields = ('cpf', 'nome', 'sexo', 'data_nascimento')
+        
