@@ -6,7 +6,7 @@ from rest_framework import filters, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Viagem, Patrocinio
-from .serializers import ViagemSerializer, PatrocinioSerializer
+from .serializers import ViagemSerializer, PatrocinioSerializer, ViagemSerializerOp
 from datetime import datetime
 from datetime import timedelta
 
@@ -66,3 +66,6 @@ class Patrocinios(viewsets.ModelViewSet):
         patrocinador = PatrocinioSerializer(queryset, many=True, context={'request': request})
         return Response(patrocinador.data)
 
+class ViagensOp(viewsets.ModelViewSet):
+    queryset = Viagem.objects.all()
+    serializer_class = ViagemSerializerOp
