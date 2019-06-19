@@ -7,7 +7,6 @@ class ViagemSerializer(serializers.ModelSerializer):
         model = Viagem
         fields = ('origem', 'destino', 'data_ida', 'data_volta', 'competicao', 'descricao_comp',
         'modalidade_comp', 'atleta', 'status')
-        depth = 2
 class PatrocinioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Patrocinio

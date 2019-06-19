@@ -14,7 +14,7 @@ class Viagem(models.Model):
     modalidade_comp = models.CharField(max_length=30, null=False)
     path_documento = models.FilePathField(null=False, blank=False)
     status = models.CharField(max_length=1, null=False, blank=False, choices=STATUS_CHOICES, default=1)
-    atleta = models.ForeignKey(Usuario, related_name='atleta', default="", on_delete=models.PROTECT)
+    atleta = models.ForeignKey(Usuario, related_name='atleta', on_delete=models.PROTECT)
     competicao = models.CharField(max_length=30, null=False, blank=False, default="")
 
     def criar_patrocinio(self, novo_patrocinador):
