@@ -3,8 +3,6 @@
 ## Requisitos funcionais:
 - Python 3.7
 - Django 2.*
-- NodeJs
-- ReactJs
 - MySQL Server 5.7
 ## Como rodar:
 - Clone este projeto em sua máquina.
